@@ -31,7 +31,7 @@ O arquivo `docker-compose.yml` orquestra como o container vai rodar, facilitando
     - `container_name: freebuff_cli`: Atribui um nome fixo e amigável ao container, em vez de um nome aleatório gerado pelo Docker.
     - `stdin_open: true` e `tty: true`: Mantêm o terminal interativo aberto. Isso é **essencial** para que ferramentas de CLI (linha de comando) como o Freebuff funcionem e aceitem nossos comandos.
     - `volumes`: Mapeia dados entre a máquina local (host) e o container.
-        - `- /home/kauezao:/workspace`: Conecta a pasta raiz `/home/kauezao` da máquina ao diretório `/workspace` do container. *(Nota: como o seu objetivo é não expor todo o SO, no futuro você pode mapear apenas a pasta do projeto específico em vez da sua home inteira, aumentando a segurança).*
+        - `- /home/exemplo/projeto:/workspace`: Conecta a pasta raiz `/home/kauezao` da máquina ao diretório `/workspace` do container. *(Nota: como o meu objetivo é não expor todo o SO, no futuro você pode mapear apenas a pasta do projeto específico em vez da sua home inteira, aumentando a segurança).*
     - `working_dir: /workspace`: Define que, ao iniciar, o container deve se posicionar nesta pasta.
 
 ---
@@ -39,8 +39,6 @@ O arquivo `docker-compose.yml` orquestra como o container vai rodar, facilitando
 ## 🚀 Próximos Passos (Futuro)
 
 - **Testar Novos Modelos:** A ideia é usar essa base para testar outros modelos e IAs no dia a dia.
-- **Encontrar a Ferramenta Ideal:** Buscar uma IA que seja excelente para o uso rotineiro, ajudando a evitar ou reduzir os custos com assinaturas, explorando o limite do que a tecnologia pode oferecer de forma acessível.
+- **Encontrar a Ferramenta Ideal:** Buscar uma IA que apenas com um bom prompt possa suprir o uso no dia a dia e evitando pagar alguma IA(por enquanto). É otimo para uso enquanto não acha uma IA para usar no dia a dia. 
 - **Refinar o Isolamento:** Ajustar os volumes mapeados para garantir que as IAs tenham acesso estritamente ao que for necessário para determinada tarefa, sem expor dados pessoais do host.
-
 ---
-
