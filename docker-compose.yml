@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  freebuff:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: freebuff_cli
+    # Mantém o terminal interativo aberto (essencial para o Freebuff funcionar)
+    stdin_open: true
+    tty: true
+    volumes:
+      # Mapeamos a sua pasta raiz (/home/kauezao) inteira para dentro do container
+      # Assim o Freebuff consegue ver e editar qualquer projeto seu
+      - /home/kauezao:/workspace
+    working_dir: /workspace
