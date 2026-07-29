@@ -8,6 +8,7 @@ services:
     container_name: opencode_cli
     stdin_open: true
     tty: true
+    user: "1000:1000"
     volumes:
       - /home/kauezao:/workspace
     working_dir: /workspace
