@@ -7,6 +7,6 @@ RUN apt-get update && \
 
 WORKDIR /workspace
 
-RUN npm install -g freebuff
+RUN npm i -g opencode-ai
 
-ENTRYPOINT ["freebuff"]
+ENTRYPOINT ["opencode"]

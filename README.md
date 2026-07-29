@@ -34,11 +34,4 @@ O arquivo `docker-compose.yml` orquestra como o container vai rodar, facilitando
         - `- /home/exemplo/projeto:/workspace`: Conecta a pasta raiz `/home/kauezao` da máquina ao diretório `/workspace` do container. *(Nota: como o meu objetivo é não expor todo o SO, no futuro você pode mapear apenas a pasta do projeto específico em vez da sua home inteira, aumentando a segurança).*
     - `working_dir: /workspace`: Define que, ao iniciar, o container deve se posicionar nesta pasta.
 
----
 
-## 🚀 Próximos Passos (Futuro)
-
-- **Testar Novos Modelos:** A ideia é usar essa base para testar outros modelos e IAs no dia a dia.
-- **Encontrar a Ferramenta Ideal:** Buscar uma IA que apenas com um bom prompt possa suprir o uso no dia a dia e evitando pagar alguma IA(por enquanto). É otimo para uso enquanto não acha uma IA para usar no dia a dia. 
-- **Refinar o Isolamento:** Ajustar os volumes mapeados para garantir que as IAs tenham acesso estritamente ao que for necessário para determinada tarefa, sem expor dados pessoais do host.
----
