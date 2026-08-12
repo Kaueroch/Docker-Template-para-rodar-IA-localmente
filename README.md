@@ -1,10 +1,6 @@
-# 🐳 Sandbox Docker para Testes de IA (Freebuff CLI)
+## Template Docker pra rodar IA locamente
+O objetivo principal é conseguir testar e usar IAs de modelos novos que aparecem todos os dias de "graça", então não a IA acesso inteiro a sua máquina,entende? é esse o meu objetivo principal com isso.
 
-Este projeto nasceu da vontade de aprender mais sobre o **Docker** e da necessidade de testar diferentes modelos e ferramentas de Inteligência Artificial (como o `freebuff`) de forma mais segura. 
-
-O objetivo principal é conseguir experimentar várias IAs no dia a dia, buscando alternativas eficientes e econômicas (para evitar assinaturas caras), **sem precisar dar acesso direto a todo o meu sistema operacional** para essas ferramentas. Através deste template de Docker,criamos um container onde a IA executa de forma local e protege a maquina do host.
-
----
 
 ## 🏗️ Estrutura do Projeto
 
@@ -16,8 +12,8 @@ O `Dockerfile` é a receita de como a imagem do nosso container será construíd
 
 - `FROM node:20-slim`: Define a imagem base. O Docker vai buscar essa versão enxuta (slim) do Node.js (versão 20) no Docker Hub para ser a fundação do nosso container.
 - `RUN apt-get update && apt-get install ...`: Quando o container é construído a partir da imagem do Node, este comando roda no terminal do Debian (sistema base) para instalar ferramentas essenciais que a IA pode precisar, como `git`, `bash` e `curl`.
-- `WORKDIR /workspace`: Cria uma área de trabalho virtual (um diretório) dentro do container. É onde os comandos serão executados por padrão.
-- `RUN npm install -g freebuff`: Usa o gerenciador de pacotes do Node (`npm`) para instalar o `freebuff` globalmente dentro do container.
+- `WORKDIR /workspace`: Cria uma área de trabalho virtual (um diretório) dentro do container. É onde os comandos serão executados por padrão. E que pode ser alterado para onde voce deseje que seja rodado.
+- `RUN npm install -g NOME-DA-IA`: Usa o gerenciador de pacotes do Node (`npm`) para instalar a IA de sua preferencia globalmente dentro do container.
 - `ENTRYPOINT ["freebuff"]`: É o ponto de entrada principal. Assim que o container iniciar, ele executará automaticamente o Freebuff (abrindo a sua tela de login/interface).
 
 ### 🐙 Docker Compose
@@ -33,12 +29,3 @@ O arquivo `docker-compose.yml` orquestra como o container vai rodar, facilitando
     - `volumes`: Mapeia dados entre a máquina local (host) e o container.
         - `- /home/exemplo/projeto:/workspace`: Conecta a pasta raiz `/home/kauezao` da máquina ao diretório `/workspace` do container. *(Nota: como o meu objetivo é não expor todo o SO, no futuro você pode mapear apenas a pasta do projeto específico em vez da sua home inteira, aumentando a segurança).*
     - `working_dir: /workspace`: Define que, ao iniciar, o container deve se posicionar nesta pasta.
-
----
-
-## 🚀 Próximos Passos (Futuro)
-
-- **Testar Novos Modelos:** A ideia é usar essa base para testar outros modelos e IAs no dia a dia.
-- **Encontrar a Ferramenta Ideal:** Buscar uma IA que apenas com um bom prompt possa suprir o uso no dia a dia e evitando pagar alguma IA(por enquanto). É otimo para uso enquanto não acha uma IA para usar no dia a dia. 
-- **Refinar o Isolamento:** Ajustar os volumes mapeados para garantir que as IAs tenham acesso estritamente ao que for necessário para determinada tarefa, sem expor dados pessoais do host.
----
